@@ -17,15 +17,15 @@ export function Summary({items = [], onOrderSubmit}) {
             onOrderSubmit(order);
         }
     }
-    // const resetOrderList = (e) =>{
-    //     of()
-    // }
+    const resetOrderList = (e) =>{
+        window.location.reload();
+    }
     return (
         <>
             <div className="row-2">
                 <h5 className=" text-start">주문 목록</h5>
                 <div className=" text-end action">
-                    {/*<button onClick={resetOrderList}>초기화</button>*/}
+                    <button onClick={resetOrderList}>초기화</button>
                 </div>
             </div>
 

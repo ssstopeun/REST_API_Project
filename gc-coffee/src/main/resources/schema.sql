@@ -37,7 +37,7 @@ CREATE TABLE order_items
 );
 
 set FOREIGN_KEY_CHECKS =0;
-truncate table products;
+/*truncate table products;*/
 truncate table orders;
 truncate table order_items;
 set foreign_key_checks =1;

@@ -44,7 +44,15 @@ function App() {
                     quantity: v.count
                 }))
             }).then(
-                v => swal('주문이 완료되었습니다!', "이용해 주셔서 감사합니다.", 'success'),
+                v => {
+                    swal({
+                        title : ("주문이 완료되었습니다!"),
+                        icon  : "success",
+                        closeOnClickOutside : false
+                    }).then(function(){
+                        window.location.reload();
+                    });
+                },
                 e => {
                     swal('주문 실패!',"올바른 입력값이 아닙니다!\n 다시 확인한 후 주문해주세요!",'warning');
                     console.error(e);
