@@ -52,9 +52,10 @@ function App() {
     }
 
     return (
+
         <div className="container-fluid">
-            <div className="row justify-content-center m-4">
-                <h1 className="text-center">Grids & Circle</h1>
+            <div className="row justify-content-center m-4" >
+                <h1 id = "font" className="text-center">너는 지금 커피가 먹고 싶다.</h1>
             </div>
             <div className="card">
                 <div className="row">

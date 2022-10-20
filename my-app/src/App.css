@@ -1,7 +1,16 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'establish';
+  src: url("./fonts/establish Retrosans.ttf") format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   background: #ddd;
 }
+
 
 .card {
   margin: auto;
@@ -9,7 +18,8 @@ body {
   width: 90%;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1rem;
-  border: transparent
+  border: transparent;
+  font-family:'establish';
 }
 
 .summary {
@@ -17,7 +27,8 @@ body {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   padding: 4vh;
-  color: rgb(65, 65, 65)
+  color: rgb(65, 65, 65);
+  font-family:'establish';
 }
 
 @media (max-width: 767px) {
@@ -33,6 +44,7 @@ body {
 
 .title b {
   font-size: 1.5rem
+
 }
 
 .col-2,
@@ -55,4 +67,8 @@ hr {
 }
 .products .action {
   line-height: 38px;
+}
+
+#font{
+  font-family:'establish';
 }
