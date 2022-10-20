@@ -1,5 +1,6 @@
 import {SummaryItem} from "./SummaryItem";
 import React, {useState} from "react";
+import swal from 'sweetalert';
 
 export function Summary({items = [], onOrderSubmit}) {
     const totalPrice = items.reduce((prev, curr) => prev + (curr.price * curr.count), 0);
@@ -11,16 +12,24 @@ export function Summary({items = [], onOrderSubmit}) {
     const handlePostcodeInputChanged = (e) => setOrder({...order, postcode: e.target.value})
     const handleSubmit = (e) => {
         if (order.address === "" || order.email === "" || order.postcode === "") {
-            alert("입력값을 확인해주세요!")
+            swal('주문 실패!',"이메일 / 주소 / 우편번호의 입력을 다시 확인해 주세요!",'warning');
         } else {
             onOrderSubmit(order);
         }
     }
+    // const resetOrderList = (e) =>{
+    //     of()
+    // }
     return (
         <>
-            <div>
-                <h5 className="m-0 p-0"><b>Summary</b></h5>
+            <div className="row-2">
+                <h5 className=" text-start">주문 목록</h5>
+                <div className=" text-end action">
+                    {/*<button onClick={resetOrderList}>초기화</button>*/}
+                </div>
             </div>
+
+
             <hr/>
             {items.map(v => <SummaryItem key={v.productId} count={v.count} productName={v.productName}/>)}
             <form>
@@ -45,7 +54,7 @@ export function Summary({items = [], onOrderSubmit}) {
                 <h5 className="col">총금액</h5>
                 <h5 className="col text-end">{totalPrice}원</h5>
             </div>
-            <button className="btn btn-dark col-12" onClick={handleSubmit}>결제하기</button>
+            <button className="btn btn-dark col-12" onClick={handleSubmit}>주문하기</button>
         </>
     )
 }

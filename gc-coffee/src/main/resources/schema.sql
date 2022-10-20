@@ -35,3 +35,9 @@ CREATE TABLE order_items
     CONSTRAINT fk_order_items_to_order FOREIGN KEY (order_id) REFERENCES orders (order_id) ON DELETE CASCADE,
     CONSTRAINT fk_order_items_to_product FOREIGN KEY (product_id) REFERENCES products (product_id)
 );
+
+set FOREIGN_KEY_CHECKS =0;
+truncate table products;
+truncate table orders;
+truncate table order_items;
+set foreign_key_checks =1;

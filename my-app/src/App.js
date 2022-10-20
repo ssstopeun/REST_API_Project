@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {ProductList} from "./components/ProductList";
 import {Summary} from "./components/Summary";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function App() {
     const [products, setProducts] = useState([
@@ -30,7 +31,7 @@ function App() {
 
     const handleOrderSubmit = (order) => {
         if (items.length === 0) {
-            alert("아이템을 추가해 주세요!");
+            swal('주문 실패!',"주문하실 상품을 추가해 주세요!",'warning');
         } else {
             axios.post('http://localhost:7456/api/v1/orders', {
                 email: order.email,
@@ -43,9 +44,9 @@ function App() {
                     quantity: v.count
                 }))
             }).then(
-                v => alert("주문이 정상적으로 접수되었습니다."),
+                v => swal('주문이 완료되었습니다!', "이용해 주셔서 감사합니다.", 'success'),
                 e => {
-                    alert("서버 장애");
+                    swal('주문 실패!',"올바른 입력값이 아닙니다!\n 다시 확인한 후 주문해주세요!",'warning');
                     console.error(e);
                 })
         }
