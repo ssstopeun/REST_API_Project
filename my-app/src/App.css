@@ -31,6 +31,7 @@ body {
   font-family:'establish';
 }
 
+
 @media (max-width: 767px) {
   .summary {
     border-top-right-radius: unset;

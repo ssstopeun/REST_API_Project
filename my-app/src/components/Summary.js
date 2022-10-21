@@ -17,9 +17,14 @@ export function Summary({items = [], onOrderSubmit}) {
             onOrderSubmit(order);
         }
     }
+
+
+
     const resetOrderList = (e) =>{
         window.location.reload();
     }
+
+
     return (
         <>
             <div className="row-2">
@@ -55,6 +60,10 @@ export function Summary({items = [], onOrderSubmit}) {
                 <h5 className="col text-end">{totalPrice}원</h5>
             </div>
             <button className="btn btn-dark col-12" onClick={handleSubmit}>주문하기</button>
+
+
+
+
         </>
     )
 }

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, {useEffect, useState} from 'react';
 import {ProductList} from "./components/ProductList";
 import {Summary} from "./components/Summary";
+import {Order} from "./components/Order";
 import axios from "axios";
 import swal from 'sweetalert';
 
@@ -19,8 +20,17 @@ function App() {
         ]
     );
 
+    const [fixOrders, setFixOrders] = useState([
+        axios.get('http://localhost:7456/api/v1/orders')
+            .then(v => setFixOrders(v.data))
+    ]);
 
     const [items, setItems] = useState([]);
+
+    const [orderList, setOrderList] = useState([
+        {orderId: 'uuid-1', orderEmail : 'test@naver.com', createAt: 'createTime'}
+    ]);
+
     const handleAddClicked = productId => {
         const product = products.find(v => v.productId === productId);
         const found = items.find(v => v.productId === productId);
@@ -30,6 +40,12 @@ function App() {
                 count: 1
             }]
         setItems(updatedItems);
+    }
+
+    const handleShowOrder = email => {
+        const orderList = fixOrders.filter(v => v.email === email);
+        setOrderList(orderList);
+        swal("주문날짜 : " + orderList.createAt);
     }
 
 
@@ -118,11 +134,18 @@ function App() {
                     </div>
                     <div className="col-md-4 summary p-4">
                         <Summary items={items} onOrderSubmit={handleOrderSubmit}/>
+                        <Order orderList={orderList} onOrderSubmit={handleShowOrder}/>
+
                     </div>
+
                 </div>
             </div>
         </div>
     );
+
+
 }
+
+
 
 export default App;
